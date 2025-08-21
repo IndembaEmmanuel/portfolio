@@ -12,7 +12,7 @@ const translations: Translation = {
     greeting: "Hello!",
     name: "Je suis",
     role: "Développeur Full Stack",
-    description: "Passionné par les technologies web et l'Internet des Objets, je transforme les idées en solutions digitales complètes, de l'application web moderne aux systèmes embarqués industriels.",
+    description: "Je conçois et développe des applications web/mobile modernes, performantes et adaptées à vos besoins.",
     cta: {
       projects: "Voir mes projets",
       contact: "Me contacter"
@@ -40,7 +40,15 @@ const translations: Translation = {
   about: {
     title: "À propos de moi",
     subtitle: "Développeur passionné & créatif",
-    description: "Je suis un développeur full stack avec une expertise en développement web et systèmes embarqués. Passionné par les nouvelles technologies, j'aime créer des solutions innovantes qui répondent aux besoins des utilisateurs.",
+    bio1: "Je suis Emmanuel Indemba, développeur fullstack basé à Paris. Passionné par les technologies web et l’Internet des Objets, je transforme les idées en solutions digitales complètes : des applications web modernes aux systèmes embarqués industriels. Grand fan de football ⚽, je pratique aussi la musculation et j’adore voyager !",
+    webDevelopment: "Développement Web",
+    appDevelopment: "Développement d'Applications",
+    iot: "Objets Connectés",
+    travel: "Voyages",
+    sports: "Sports",
+    completedProjects: "Projets complétés",
+    clientSatisfaction: "Satisfaction client",
+    yearsExperience: "Années d'expérience",
     experience: {
       title: "Expérience",
       years: "{years} ans"
