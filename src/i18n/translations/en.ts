@@ -40,7 +40,7 @@ const translations: Translation = {
   about: {
     title: "About me",
     subtitle: "Passionate & creative developer",
-    bio1: "I’m Emmanuel Indemba, a fullstack developer based in Paris. Passionate about web technologies and the Internet of Things, I turn ideas into complete digital solutions — from modern web applications to industrial embedded systems. A big football fan ⚽, I also enjoy working out and love traveling !",
+    bio1: "I’m Emmanuel Indemba, a fullstack developer based in Paris with a Master’s degree in Software Architecture from Epitech. Passionate about web technologies and the Internet of Things, I turn ideas into complete digital solutions — from modern web applications to industrial embedded systems. A big football fan ⚽, I also enjoy working out and love traveling !",
     webDevelopment: "Website Development",
     appDevelopment: "App Development",
     iot: "Connected Objects",
@@ -56,6 +56,12 @@ const translations: Translation = {
   },
   language: {
     select: "Language"
+  },
+  footer: {
+    tagline: "Full Stack Developer passionate about creating modern web/mobile applications",
+    navigation: "Navigation",
+    contact: "Contact",
+    rights: "All rights reserved."
   }
 };
 

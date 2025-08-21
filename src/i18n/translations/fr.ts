@@ -40,7 +40,7 @@ const translations: Translation = {
   about: {
     title: "À propos de moi",
     subtitle: "Développeur passionné & créatif",
-    bio1: "Je suis Emmanuel Indemba, développeur fullstack basé à Paris. Passionné par les technologies web et l’Internet des Objets, je transforme les idées en solutions digitales complètes : des applications web modernes aux systèmes embarqués industriels. Grand fan de football ⚽, je pratique aussi la musculation et j’adore voyager !",
+    bio1: "Je suis Emmanuel Indemba, développeur fullstack basé à Paris et diplômé d’un Master Architecte Logiciel à Epitech. Passionné par les technologies web et l’Internet des Objets, je transforme les idées en solutions digitales complètes : des applications web modernes aux systèmes embarqués industriels. Grand fan de football ⚽, je pratique aussi la musculation et j’adore voyager !",
     webDevelopment: "Développement Web",
     appDevelopment: "Développement d'Applications",
     iot: "Objets Connectés",
@@ -56,6 +56,12 @@ const translations: Translation = {
   },
   language: {
     select: "Langue"
+  },
+  footer: {
+    tagline: "Développeur Full Stack passionné par la création d'applications web/mobile modernes",
+    navigation: "Navigation",
+    contact: "Contact",
+    rights: "Tous droits réservés."
   }
 };
 

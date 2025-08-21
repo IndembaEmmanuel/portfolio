@@ -18,7 +18,6 @@ if (pathSegments.length > 0 && ["fr", "en"].includes(pathSegments[0])) {
 const translations = await loadTranslations(currentLanguage);
 const t = (key: string) => translate(translations, key);
 
-// Données pour les statistiques
 const stats = [
     {
         number: "4",
@@ -27,7 +26,6 @@ const stats = [
     }
 ];
 
-// Données pour les intérêts/services
 const interests = [
     {
         iconClass: "fas fa-globe",
@@ -37,7 +35,6 @@ const interests = [
         iconClass: "fas fa-mobile-alt",
         title: t("about.appDevelopment")
     },
-    // IOT
     {
         iconClass: "fas fa-wifi",
         title: t("about.iot")
