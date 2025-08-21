@@ -22,6 +22,8 @@ const translations: Translation = {
     title: "My skills",
     frontend: "Front-end",
     backend: "Back-end",
+    database: "Databases",
+    devops: "DevOps / Cloud",
     other: "Others"
   },
   projects: {
