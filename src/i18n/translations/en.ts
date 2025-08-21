@@ -27,9 +27,15 @@ const translations: Translation = {
     other: "Others"
   },
   projects: {
-    title: "My projects",
+    title: "My public projects",
     viewProject: "View project",
-    viewCode: "View code"
+    viewCode: "View code",
+    noProjects: "No projects available",
+    badge: {
+      "in-progress": "In progress",
+      "stand-by": "On hold",
+      "completed": "Completed"
+    }
   },
   about: {
     title: "About me",

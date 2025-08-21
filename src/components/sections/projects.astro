@@ -1,0 +1,176 @@
+---
+import {
+    detectBrowserLanguage,
+    loadTranslations,
+    translate,
+} from "../../i18n/i18n";
+import ProjectCard from "../ProjectCard.astro";
+import type { Project } from "../../types/project";
+import prestaslotImage from '../../assets/projects/prestaslot.png';
+import portfolioImage from '../../assets/projects/portfolio.png';
+import easyColisImage from '../../assets/projects/Easy-colis.png';
+
+const pathname = Astro.url.pathname;
+const pathSegments = pathname.split("/").filter(Boolean);
+let currentLanguage = "";
+
+if (pathSegments.length > 0 && ["fr", "en"].includes(pathSegments[0])) {
+    currentLanguage = pathSegments[0];
+} else {
+    currentLanguage = detectBrowserLanguage();
+}
+
+const translations = await loadTranslations(currentLanguage);
+const t = (key: string) => translate(translations, key);
+
+const projects: Project[] = [
+    {
+        title: "Prestaslot",
+        description: "Lancement du MVP de mon SaaS Prestaslot, une solution destinée à optimiser la gestion des services pour les professionnels du secteur de la beauté.",
+        image: prestaslotImage,
+        technologies: [
+            { name: "React", icon: "devicon-react-original colored" },
+            { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+            { name: "Express", icon: "devicon-express-original" },
+            { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+            { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+            { name: "AWS S3", icon: "devicon-amazonwebservices-plain colored" },
+            { name: "Docker", icon: "devicon-docker-plain colored" },
+        ],
+        links: {
+            live: "https://prestaslot.com"
+        },
+        featured: true,
+        badge: "in-progress"
+    },
+    {
+        title: "Mon Portfolio",
+        description: "Permet de présenter mes compétences et mes projets publics.",
+        image: portfolioImage,
+        technologies: [
+            { name: "Astro", icon: "devicon-astro-plain colored" },
+            { name: "React", icon: "devicon-react-original colored" },
+            { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+            { name: "CSS", icon: "devicon-css3-plain colored" },
+        ],
+        links: {
+            live: "https://emmanuelindemba.com",
+            code: "https://github.com/IndembaEmmanuel/portfolio"
+        },
+        featured: true,
+        badge: "in-progress"
+    },
+    {
+        title: "Easy colis",
+        description: "Projet de comparison de prix entre plusieurs transporteurs de colis.",
+        image: easyColisImage,
+        technologies: [
+            { name: "Next.js", icon: "devicon-nextjs-plain" },
+            { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+        ],
+        links: {
+            code: "https://gitlab.com/IndembaEmmanuel/easy-colis"
+        },
+        featured: false,
+        badge: "stand-by"
+    }
+];
+---
+
+<section id="projects" class="projects-section">
+    <div class="container">
+        <h2 class="section-title">{t("projects.title")}</h2>
+        
+        {projects.length > 0 ? (
+            <div class="projects-grid">
+                {projects.map((project) => (
+                    <div class="project-item">
+                        <ProjectCard project={project} t={t} />
+                    </div>
+                ))}
+            </div>
+        ) : (
+            <div class="no-projects">
+                <p>{t("projects.noProjects")}</p>
+            </div>
+        )}
+    </div>
+</section>
+
+<style>
+    .projects-section {
+        background-color: var(--color-bg-primary);
+        padding: 5rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .projects-section::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at bottom right,
+            rgba(52, 152, 219, 0.1),
+            transparent 50%
+        );
+        z-index: 0;
+    }
+    
+    .container {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        color: var(--color-text-primary);
+    }
+    
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2.5rem;
+    }
+    
+    .project-item {
+        height: 100%;
+    }
+    
+    .no-projects {
+        text-align: center;
+        padding: 3rem;
+        background-color: var(--color-bg-primary);
+        border-radius: 12px;
+        color: var(--color-text-secondary);
+        font-style: italic;
+    }
+    
+    /* Media queries */
+    @media (max-width: 992px) {
+        .projects-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .projects-section {
+            padding: 4rem 1rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .projects-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+</style>
