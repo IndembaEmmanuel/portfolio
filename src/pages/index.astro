@@ -1,6 +1,26 @@
 ---
-import { detectBrowserLanguage } from '../i18n/i18n';
+import { languages, defaultLanguage } from '../i18n/i18n';
 
-const userLanguage = detectBrowserLanguage();
-return Astro.redirect(`/${userLanguage}`); 
+const acceptLanguage = Astro.request.headers.get('accept-language') || '';
+let userLanguage = defaultLanguage;
+
+if (acceptLanguage) {
+  const browserLangs = acceptLanguage
+    .split(',')
+    .map(lang => {
+      const [code, priority = 'q=1.0'] = lang.trim().split(';');
+      const q = parseFloat(priority.replace('q=', '')) || 0;
+      return { code: code.split('-')[0], q };
+    })
+    .sort((a, b) => b.q - a.q);
+
+  for (const lang of browserLangs) {
+    if (Object.keys(languages).includes(lang.code)) {
+      userLanguage = lang.code;
+      break;
+    }
+  }
+}
+
+return Astro.redirect(`/${userLanguage}`, 301);
 ---
