@@ -1,0 +1,82 @@
+---
+// Navbar.astro - Barre de navigation avec effet glassmorphism
+---
+
+<header class="navbar glass">
+  <div class="container navbar-container">
+    <div class="logo">
+      <a href="/">Developper</a>
+    </div>
+    <nav class="nav-links">
+      <a href="#hero" class="nav-link">Home</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem 0;
+  }
+
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo a {
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .logo a:hover {
+    color: var(--color-accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    color: var(--color-text-primary);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: var(--color-accent);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width var(--transition-normal);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .navbar-container {
+      padding: 0 1rem;
+    }
+  }
+</style>

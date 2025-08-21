@@ -1,0 +1,316 @@
+---
+// Import des images pour l'effet d'orbite
+import reactLogo from "../../assets/react-logo.svg?url";
+import nextjsLogo from "../../assets/nextjs-logo.svg?url";
+import nodejsLogo from "../../assets/nodejs-logo.svg?url";
+---
+
+<section id="hero" class="hero-section">
+  <div class="container hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="greeting">Hello!</span>
+        <span class="name">Je suis <span class="highlight">Emmanuel</span></span>
+        <span class="role">Développeur Full Stack</span>
+      </h1>
+      <p class="hero-description">
+        Passionné par la création d'applications web modernes et performantes,
+        je développe des solutions élégantes pour des problèmes complexes.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn primary-btn">Voir mes projets</a>
+        <a href="#contact" class="btn secondary-btn">Me contacter</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="code-container">
+        <div class="tech-row">
+          <div class="tech-logo">
+            <img src={reactLogo} alt="React" />
+          </div>
+          <div class="tech-logo">
+            <img src={nextjsLogo} alt="Next.js" />
+          </div>
+          <div class="tech-logo">
+            <img src={nodejsLogo} alt="Node.js" />
+          </div>
+        </div>
+        <div class="code-background">
+          <div class="code-window">
+            <div class="window-header">
+              <div class="window-buttons">
+                <span class="window-button close"></span>
+                <span class="window-button minimize"></span>
+                <span class="window-button maximize"></span>
+              </div>
+              <div class="window-title">portfolio Emmanuel</div>
+            </div>
+            <div class="window-content">
+              <pre><code>
+const portfolio = &#123;
+  name: "Emmanuel",
+  role: "Développeur Full Stack",
+  skills: ["HTML", "CSS", "JavaScript", 
+    "React", "Astro", "Node.js"],
+  passion: "Créer des expériences web 
+    modernes et performantes"
+&#125;;
+              </code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 5rem; /* Pour compenser la navbar fixe */
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-bg-primary);
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(52, 152, 219, 0.1), transparent 50%);
+    z-index: 0;
+  }
+
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    z-index: 1;
+    position: relative;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .greeting {
+    font-size: 0.5em;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .name {
+    margin-bottom: 0.5rem;
+  }
+
+  .highlight {
+    color: var(--color-accent);
+    position: relative;
+  }
+
+  .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: var(--color-accent);
+    opacity: 0.3;
+  }
+
+  .role {
+    color: var(--color-text-secondary);
+  }
+
+  .hero-description {
+    font-size: 1.2rem;
+    max-width: 500px;
+    margin-bottom: 2rem;
+    color: var(--color-text-secondary);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .primary-btn {
+    background-color: var(--color-accent);
+    color: white;
+  }
+
+  .secondary-btn {
+    background-color: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-text-secondary);
+  }
+
+  .secondary-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .code-container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tech-row {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+  }
+
+  .tech-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    background-color: var(--color-bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    z-index: 2;
+  }
+
+  .tech-logo img {
+    width: 65%;
+    height: 65%;
+    object-fit: contain;
+  }
+
+  .tech-logo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    background-color: var(--color-bg-secondary-hover, #2a2a2a);
+  }
+
+  .code-background {
+    width: 100%;
+    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+    transition: transform var(--transition-normal);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+  }
+
+  .code-background:hover {
+    transform: perspective(1000px) rotateY(-2deg) rotateX(2deg);
+  }
+  
+  .code-window {
+    background-color: var(--color-bg-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .window-header {
+    background: linear-gradient(to right, #2c2c2c, #1a1a1a);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .window-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .window-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .window-button.close {
+    background-color: #ff5f56;
+  }
+  
+  .window-button.minimize {
+    background-color: #ffbd2e;
+  }
+  
+  .window-button.maximize {
+    background-color: #27c93f;
+  }
+  
+  .window-title {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    font-family: var(--font-secondary);
+  }
+  
+  .window-content {
+    padding: 1.5rem;
+  }
+
+  .window-content pre {
+    margin: 0;
+    font-family: var(--font-secondary);
+    color: var(--color-text-primary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    overflow-x: auto;
+  }
+
+  .window-content code {
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-visual {
+      order: -1;
+      margin-bottom: 2rem;
+    }
+
+    .code-background {
+      transform: none;
+      max-width: 100%;
+    }
+    
+    .window-header {
+      padding: 0.5rem;
+    }
+    
+    .window-button {
+      width: 10px;
+      height: 10px;
+    }
+  }
+</style>
