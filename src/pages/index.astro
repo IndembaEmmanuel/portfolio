@@ -1,10 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/sections/hero.astro';
+import { detectBrowserLanguage } from '../i18n/i18n';
 
-const pageTitle = 'Emmanuel Indemba';
+const userLanguage = detectBrowserLanguage();
+return Astro.redirect(`/${userLanguage}`); 
 ---
-
-<Layout title={pageTitle}>
-	<Hero />
-</Layout>
