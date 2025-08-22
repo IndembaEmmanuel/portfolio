@@ -25,8 +25,10 @@ export const onRequest: MiddlewareHandler = ({ request, locals }, next) => {
       }
     }
     
-    // Rediriger vers la langue préférée
-    return Response.redirect(`${url.origin}/${preferredLanguage}`, 302);
+    // Construire l'URL de redirection en utilisant le pathname
+    // Cela fonctionne à la fois en local et en production
+    const redirectURL = new URL(`/${preferredLanguage}`, request.url);
+    return Response.redirect(redirectURL.toString(), 302);
   }
   
   return next();
