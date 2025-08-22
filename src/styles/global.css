@@ -1,6 +1,7 @@
 /* global.css */
 
-:root {
+/* Variables de thème sombre (par défaut) */
+:root[data-theme="dark"], :root {
   /* Couleurs principales */
   --color-bg-primary: #0f0f0f;
   --color-bg-secondary: #1a1a1a;
@@ -14,6 +15,11 @@
   --glass-border: rgba(255, 255, 255, 0.05);
   --glass-shadow: rgba(0, 0, 0, 0.2);
   --glass-blur: 8px;
+  
+  /* Couleurs d'interface */
+  --color-bg-hover: rgba(255, 255, 255, 0.1);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-shadow: rgba(0, 0, 0, 0.3);
   
   /* Typographie */
   --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
@@ -30,6 +36,27 @@
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
+}
+
+/* Variables de thème clair */
+:root[data-theme="light"] {
+  /* Couleurs principales */
+  --color-bg-primary: #f5f5f7;
+  --color-bg-secondary: #ffffff;
+  --color-text-primary: #1d1d1f;
+  --color-text-secondary: #6e6e73;
+  --color-accent: #0071e3;
+  --color-accent-light: #2b8ff3;
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.05);
+  --glass-shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Couleurs d'interface */
+  --color-bg-hover: rgba(0, 0, 0, 0.05);
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-shadow: rgba(0, 0, 0, 0.1);
 }
 
 /* Reset de base */
@@ -113,7 +140,7 @@ a:hover {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  /*border-bottom: 1px solid var(--glass-border);*/
+  /*border: 1px solid var(--glass-border);*/
   box-shadow: 0 4px 20px 0 var(--glass-shadow);
 }
 

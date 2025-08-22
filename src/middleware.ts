@@ -25,6 +25,5 @@ export const onRequest: MiddlewareHandler = async ({ request, locals }, next) =>
     return Response.redirect(`${url.origin}/${preferredLanguage}`, 302);
   }
   
-  // Continuer normalement pour toutes les autres routes
   return next();
 };
