@@ -1,4 +1,7 @@
 ---
+// Forcer le rendu côté serveur
+export const prerender = false;
+
 const preferredLanguage = Astro.preferredLocale;
 return Astro.redirect(`/${preferredLanguage}`, 301);
 ---
