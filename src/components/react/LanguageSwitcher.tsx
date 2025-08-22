@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { languages, defaultLanguage } from '../../i18n/i18n';
+import { languages } from '../../i18n/i18n';
 
 interface LanguageSwitcherProps {
   currentLanguage: string;
 }
 
-const LanguageSwitcher = ({ currentLanguage = defaultLanguage }: LanguageSwitcherProps) => {
+const LanguageSwitcher = ({ currentLanguage = 'fr' }: LanguageSwitcherProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState(currentLanguage);
 

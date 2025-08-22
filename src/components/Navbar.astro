@@ -1,16 +1,8 @@
 ---
-import { detectBrowserLanguage, loadTranslations, translate } from '../i18n/i18n';
+import { loadTranslations, translate } from '../i18n/i18n';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 
-const pathname = Astro.url.pathname;
-const pathSegments = pathname.split('/').filter(Boolean);
-let currentLanguage = '';
-
-if (pathSegments.length > 0 && ['fr', 'en'].includes(pathSegments[0])) {
-  currentLanguage = pathSegments[0];
-} else {
-  currentLanguage = detectBrowserLanguage();
-}
+const currentLanguage = Astro.currentLocale || 'fr';
 
 const translations = await loadTranslations(currentLanguage);
 
@@ -20,7 +12,7 @@ const t = (key: string) => translate(translations, key);
 <header class="navbar glass">
   <div class="container navbar-container">
     <div class="logo">
-      <a href="/">Developper</a>
+      <a href={`/${currentLanguage !== 'fr' ? currentLanguage : ''}`}>Developper</a>
     </div>
     
     <button class="mobile-menu-toggle" aria-label="Menu" id="mobile-menu-toggle">

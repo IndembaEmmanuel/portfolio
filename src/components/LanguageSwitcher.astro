@@ -1,19 +1,7 @@
 ---
-import { detectBrowserLanguage } from '../i18n/i18n';
 import LanguageSwitcherReact from './react/LanguageSwitcher';
 
-// Récupérer la langue actuelle depuis l'URL ou utiliser la langue du navigateur
-const pathname = Astro.url.pathname;
-const pathSegments = pathname.split('/').filter(Boolean);
-let currentLanguage = '';
-
-// Si le premier segment est une langue valide (fr ou en), l'utiliser
-if (pathSegments.length > 0 && ['fr', 'en'].includes(pathSegments[0])) {
-  currentLanguage = pathSegments[0];
-} else {
-  // Sinon, détecter la langue du navigateur
-  currentLanguage = detectBrowserLanguage();
-}
+const currentLanguage = Astro.currentLocale || 'fr';
 ---
 
 <LanguageSwitcherReact client:load currentLanguage={currentLanguage} />
