@@ -18,11 +18,9 @@ const t = (key: string) => translate(translations, key);
     <div class="container hero-container">
         <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
             <h1 class="hero-title">
-                <span class="greeting" data-aos="fade-right" data-aos-delay="200">{t("hero.greeting")}</span>
-                <span class="name" data-aos="fade-right" data-aos-delay="300">
-                    {t("hero.name")}
-                    <span class="highlight">Emmanuel Indemba</span>
-                </span>
+                <span class="greeting" data-aos="fade-right" data-aos-delay="200">👋</span>
+                <span data-aos="fade-right" data-aos-delay="300">{t("hero.name")}</span>
+                <span class="highlight" data-aos="fade-right" data-aos-delay="400">Emmanuel</span>
             </h1>
             <h2 data-aos="fade-right" data-aos-delay="400">
                 <span class="role">{t("hero.role")}</span>
@@ -134,13 +132,11 @@ const portfolio = &#123;
         margin-bottom: 0.5rem;
     }
 
-    .name {
-        margin-bottom: 0.5rem;
-    }
-
     .highlight {
         color: var(--color-accent);
         position: relative;
+        font-size: 1.2em;
+        display: inline-block;
     }
 
     .highlight::after {
@@ -330,6 +326,15 @@ const portfolio = &#123;
         .code-container {
             max-width: 450px;
         }
+        
+        .greeting, .name, .highlight {
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        
+        .highlight {
+            font-size: 1.3em;
+        }
     }
     
     /* Mobile */
@@ -424,6 +429,16 @@ const portfolio = &#123;
         .tech-logo {
             width: 40px;
             height: 40px;
+        }
+        
+        .greeting, .name, .highlight {
+            display: block;
+        }
+        
+        .highlight {
+            font-size: 1.9em;
+            font-weight: 700;
+            letter-spacing: 0.02em;
         }
     }
 </style>
