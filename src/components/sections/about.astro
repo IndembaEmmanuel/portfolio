@@ -47,18 +47,18 @@ const interests = [
         
         <div class="about-content">
             <div class="interests-column">
-                <div class="interests-list">
+                <ul class="interests-list" role="list">
                     {interests.map((interest) => (
-                        <div class="interest-item">
+                        <li class="interest-item">
                             <div class="interest-icon">
-                                <i class={interest.iconClass}></i>
+                                <i class={interest.iconClass} aria-hidden="true"></i>
                             </div>
                             <div class="interest-title">
                                 {interest.title}
                             </div>
-                        </div>
+                        </li>
                     ))}
-                </div>
+                </ul>
             </div>
             
             <div class="bio-column">

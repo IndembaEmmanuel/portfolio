@@ -1,6 +1,7 @@
 ---
 import { loadTranslations, translate } from '../i18n/i18n';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import ThemeToggle from './ThemeToggle.astro';
 
 const currentLanguage = Astro.currentLocale || 'fr';
 
@@ -12,7 +13,7 @@ const t = (key: string) => translate(translations, key);
 <header class="navbar glass">
   <div class="container navbar-container">
     <div class="logo">
-      <a href={`/${currentLanguage}`}>Developper</a>
+      <a href={`/${currentLanguage}`}>Developer</a>
     </div>
     
     <button class="mobile-menu-toggle" aria-label="Menu" id="mobile-menu-toggle">
@@ -28,8 +29,11 @@ const t = (key: string) => translate(translations, key);
         <a href="#projects" class="nav-link">{t('navbar.projects')}</a>
         <a href="#about" class="nav-link">{t('navbar.about')}</a>
       </nav>
-      <div class="language-switcher-container">
-        <LanguageSwitcher />
+      <div class="theme-language-container">
+        <ThemeToggle />
+        <div class="language-switcher-container">
+          <LanguageSwitcher />
+        </div>
       </div>
     </div>
   </div>
@@ -86,8 +90,14 @@ const t = (key: string) => translate(translations, key);
     align-items: center;
   }
   
+  .theme-language-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
   .language-switcher-container {
-    margin-left: 1.5rem;
+    margin-left: 0.5rem;
   }
 
   .logo a {
@@ -213,9 +223,15 @@ const t = (key: string) => translate(translations, key);
       padding: 0.5rem 0;
     }
     
+    .theme-language-container {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      gap: 1.5rem;
+    }
+    
     .language-switcher-container {
       margin-left: 0;
-      margin-top: 1.5rem;
       width: 100%;
     }
     
