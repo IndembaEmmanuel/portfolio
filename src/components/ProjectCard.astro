@@ -1,0 +1,315 @@
+---
+import type { Project } from '../types/project';
+import { Image } from 'astro:assets';
+
+interface Props {
+    project: Project;
+    t: (key: string) => string;
+}
+
+const { project, t } = Astro.props;
+---
+
+<div class="project-card">
+    <div class="project-image-container">
+        {typeof project.image === 'string' ? (
+            <img src={project.image} alt={project.title} class="project-image" />
+        ) : (
+            <Image 
+                src={project.image} 
+                alt={project.title} 
+                class="project-image" 
+                width={800} 
+                height={450} 
+                loading="lazy" 
+                format="webp" 
+                quality={80} 
+            />
+        )}
+        {project.links?.live && (
+            <div class="project-overlay">
+                <a href={project.links.live} target="_blank" rel="noopener noreferrer" class="project-link">
+                    {t("projects.viewProject")}
+                </a>
+            </div>
+        )}
+    </div>
+    <div class="project-content">
+        <div class="project-header">
+            <h3 class="project-title">{project.title}</h3>
+            {project.badge && (
+                <span class={`project-badge ${project.badge}`}>
+                    {t(`projects.badge.${project.badge}`)}
+                </span>
+            )}
+        </div>
+        <p class="project-description">{project.description}</p>
+        
+        <div class="project-tech">
+            {project.technologies.map((tech) => (
+                <div class="tech-item" title={tech.name}>
+                    <i class={tech.icon}></i>
+                </div>
+            ))}
+        </div>
+        
+        <div class="project-links">
+            {project.links?.code && (
+                <a href={project.links.code} target="_blank" rel="noopener noreferrer" class="code-link">
+                    <i class="devicon-github-original"></i>
+                    {t("projects.viewCode")}
+                </a>
+            )}
+        </div>
+    </div>
+</div>
+
+<style>
+    .project-card {
+        background-color: var(--color-bg-secondary);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+    
+    .project-image-container {
+        position: relative;
+        overflow: hidden;
+        padding-top: 56.25%; /* 16:9 aspect ratio */
+    }
+    
+    .project-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    .project-card:hover .project-image {
+        transform: scale(1.05);
+    }
+    
+    .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .project-card:hover .project-overlay {
+        opacity: 1;
+    }
+    
+    .project-link {
+        color: white;
+        background-color: var(--color-accent);
+        padding: 0.8rem 1.5rem;
+        border-radius: 30px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+    
+    .project-link:hover {
+        background-color: var(--color-accent-dark);
+    }
+    
+    .project-content {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    
+    .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .project-title {
+        font-size: 1.5rem;
+        color: var(--color-text-primary);
+        margin: 0;
+    }
+    
+    .project-badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: inline-flex;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+    
+    .project-badge::before {
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+    
+    .in-progress {
+        background-color: rgba(52, 152, 219, 0.15);
+        color: #3498db;
+        border: 1px solid rgba(52, 152, 219, 0.5);
+    }
+    
+    .in-progress::before {
+        background-color: #3498db;
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+        animation: pulse 1.5s infinite;
+    }
+    
+    .stand-by {
+        background-color: rgba(241, 196, 15, 0.15);
+        color: #f1c40f;
+        border: 1px solid rgba(241, 196, 15, 0.5);
+    }
+    
+    .stand-by::before {
+        background-color: #f1c40f;
+        box-shadow: 0 0 0 2px rgba(241, 196, 15, 0.3);
+    }
+    
+    .completed {
+        background-color: rgba(46, 204, 113, 0.15);
+        color: #2ecc71;
+        border: 1px solid rgba(46, 204, 113, 0.5);
+    }
+    
+    .completed::before {
+        background-color: #2ecc71;
+        box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.3);
+    }
+    
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.6);
+        }
+        70% {
+            box-shadow: 0 0 0 5px rgba(52, 152, 219, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+        }
+    }
+    
+    .project-description {
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+        height: 6rem; /* Hauteur fixe pour 3-4 lignes */
+        overflow-y: auto;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+        padding-right: 5px;
+    }
+    
+    .project-description::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .project-description::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+    }
+    
+    .project-description::-webkit-scrollbar-thumb {
+        background: var(--color-accent);
+        border-radius: 10px;
+    }
+    
+    .project-description::-webkit-scrollbar-thumb:hover {
+        background: var(--color-accent-dark);
+    }
+    
+    .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        min-height: 2.5rem; /* Hauteur minimale pour les icônes */
+    }
+    
+    .tech-item {
+        font-size: 1.5rem;
+        color: var(--color-text-secondary);
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+    
+    .tech-item:hover {
+        transform: scale(1.2);
+        color: var(--color-accent);
+    }
+    
+    .project-links {
+        display: flex;
+        justify-content: flex-end;
+        min-height: 1.5rem; /* Hauteur minimale pour les liens */
+    }
+    
+    .code-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--color-text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+    
+    .code-link:hover {
+        color: var(--color-accent);
+    }
+    
+    @media (max-width: 768px) {
+        .project-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+        }
+        
+        .project-badge {
+            font-size: 0.7rem;
+        }
+        
+        .project-description {
+            font-size: 0.9rem;
+        }
+        
+        .tech-item {
+            font-size: 1.3rem;
+        }
+    }
+</style>

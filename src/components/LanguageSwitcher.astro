@@ -1,0 +1,7 @@
+---
+import LanguageSwitcherReact from './react/LanguageSwitcher';
+
+const currentLanguage = Astro.currentLocale || 'fr';
+---
+
+<LanguageSwitcherReact client:load currentLanguage={currentLanguage} />

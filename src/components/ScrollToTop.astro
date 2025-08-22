@@ -1,0 +1,79 @@
+---
+---
+
+<button id="scrollToTop" class="scroll-to-top" aria-label="Retour en haut de page">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const scrollToTopButton = document.getElementById('scrollToTop');
+        
+        if (scrollToTopButton) {
+            // Afficher le bouton quand l'utilisateur descend de 300px
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    scrollToTopButton.classList.add('visible');
+                } else {
+                    scrollToTopButton.classList.remove('visible');
+                }
+            });
+            
+            // Remonter en haut de page quand le bouton est cliqué
+            scrollToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    });
+</script>
+
+<style>
+    .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--color-accent);
+        color: white;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .scroll-to-top:hover {
+        background-color: var(--color-accent-dark, #2980b9);
+        transform: translateY(-3px);
+    }
+    
+    .scroll-to-top i {
+        font-size: 1.2rem;
+    }
+    
+    @media (max-width: 768px) {
+        .scroll-to-top {
+            width: 40px;
+            height: 40px;
+            bottom: 20px;
+            right: 20px;
+        }
+    }
+</style>
