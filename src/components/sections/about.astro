@@ -43,13 +43,13 @@ const interests = [
 
 <section id="about" class="about-section">
     <div class="container">
-        <h2 class="section-title">{t("about.title")}</h2>
+        <h2 class="section-title" data-aos="fade-up">{t("about.title")}</h2>
         
         <div class="about-content">
-            <div class="interests-column">
+            <div class="interests-column" data-aos="fade-right" data-aos-delay="200">
                 <ul class="interests-list" role="list">
-                    {interests.map((interest) => (
-                        <li class="interest-item">
+                    {interests.map((interest, index) => (
+                        <li class="interest-item" data-aos="fade-up" data-aos-delay={200 + (index * 100)}>
                             <div class="interest-icon">
                                 <i class={interest.iconClass} aria-hidden="true"></i>
                             </div>
@@ -61,14 +61,14 @@ const interests = [
                 </ul>
             </div>
             
-            <div class="bio-column">
+            <div class="bio-column" data-aos="fade-left" data-aos-delay="300">
                 <div class="bio-content">
-                    <p>Hello 👋</p>
-                    <p>{t("about.bio1")}</p>
+                    <p data-aos="fade-up" data-aos-delay="400">Hello 👋</p>
+                    <p data-aos="fade-up" data-aos-delay="500">{t("about.bio1")}</p>
                     
-                    <div class="stats-container">
+                    <div class="stats-container" data-aos="fade-up" data-aos-delay="600">
                         {stats.map((stat) => (
-                            <div class="stat-item">
+                            <div class="stat-item" data-aos="zoom-in" data-aos-delay="700">
                                 <div class="stat-number">
                                     {stat.number}
                                     <span class="stat-symbol">{stat.symbol}</span>

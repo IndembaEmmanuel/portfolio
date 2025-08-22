@@ -71,18 +71,18 @@ const projects: Project[] = [
 
 <section id="projects" class="projects-section">
     <div class="container">
-        <h2 class="section-title">{t("projects.title")}</h2>
+        <h2 class="section-title" data-aos="fade-up">{t("projects.title")}</h2>
         
         {projects.length > 0 ? (
             <div class="projects-grid">
-                {projects.map((project) => (
-                    <div class="project-item">
+                {projects.map((project, index: number) => (
+                    <div class="project-item" data-aos="fade-up" data-aos-delay={200 + (index * 150)}>
                         <ProjectCard project={project} t={t} />
                     </div>
                 ))}
             </div>
         ) : (
-            <div class="no-projects">
+            <div class="no-projects" data-aos="fade-up">
                 <p>{t("projects.noProjects")}</p>
             </div>
         )}

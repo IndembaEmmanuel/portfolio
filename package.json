@@ -12,9 +12,13 @@
   "dependencies": {
     "@astrojs/react": "^4.3.0",
     "@astrojs/vercel": "^8.2.6",
+    "aos": "^2.3.4",
     "astro": "^5.13.2",
     "astro-icon": "^1.1.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/aos": "^3.0.7"
   }
 }

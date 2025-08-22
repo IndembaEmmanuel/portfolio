@@ -16,43 +16,43 @@ const t = (key: string) => translate(translations, key);
 
 <section id="hero" class="hero-section">
     <div class="container hero-container">
-        <div class="hero-content">
+        <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
             <h1 class="hero-title">
-                <span class="greeting">{t("hero.greeting")}</span>
-                <span class="name"
-                    >{t("hero.name")}
-                    <span class="highlight">Emmanuel Indemba</span></span
-                >
+                <span class="greeting" data-aos="fade-right" data-aos-delay="200">{t("hero.greeting")}</span>
+                <span class="name" data-aos="fade-right" data-aos-delay="300">
+                    {t("hero.name")}
+                    <span class="highlight">Emmanuel Indemba</span>
+                </span>
             </h1>
-            <h2>
+            <h2 data-aos="fade-right" data-aos-delay="400">
                 <span class="role">{t("hero.role")}</span>
             </h2>
-            <p class="hero-description">
+            <p class="hero-description" data-aos="fade-up" data-aos-delay="500">
                 {t("hero.description")}
             </p>
-            <div class="hero-cta">
-                <a href="#projects" class="btn primary-btn"
-                    >{t("hero.cta.projects")}</a
-                >
-                <a href="mailto:indemba.emmanuel@gmail.com" class="btn secondary-btn"
-                    >{t("hero.cta.contact")}</a
-                >
+            <div class="hero-cta" data-aos="fade-up" data-aos-delay="600">
+                <a href="#projects" class="btn primary-btn">
+                    {t("hero.cta.projects")}
+                </a>
+                <a href="mailto:indemba.emmanuel@gmail.com" class="btn secondary-btn">
+                    {t("hero.cta.contact")}
+                </a>
             </div>
         </div>
-        <div class="hero-visual">
+        <div class="hero-visual" data-aos="fade-left" data-aos-delay="300">
             <div class="code-container">
                 <div class="tech-row">
-                    <div class="tech-logo">
+                    <div class="tech-logo" data-aos="zoom-in" data-aos-delay="700">
                         <img src={reactLogo} alt="React" />
                     </div>
-                    <div class="tech-logo">
+                    <div class="tech-logo" data-aos="zoom-in" data-aos-delay="800">
                         <img src={nextjsLogo} alt="Next.js" />
                     </div>
-                    <div class="tech-logo">
+                    <div class="tech-logo" data-aos="zoom-in" data-aos-delay="900">
                         <img src={nodejsLogo} alt="Node.js" />
                     </div>
                 </div>
-                <div class="code-background">
+                <div class="code-background" data-aos="fade-up" data-aos-delay="500">
                     <div class="code-window">
                         <div class="window-header">
                             <div class="window-buttons">
