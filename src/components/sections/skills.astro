@@ -51,16 +51,16 @@ const skills: SkillsData = {
 
 <section id="skills" class="skills-section">
     <div class="container">
-        <h2 class="section-title">{t("skills.title")}</h2>
+        <h2 class="section-title" data-aos="fade-up">{t("skills.title")}</h2>
         
         <div class="skills-categories">
             {/* Utilisation d'un composant réutilisable pour chaque catégorie */}
-            {Object.entries(skills).map(([category, skillsList]) => (
-                <div class="skills-category">
+            {Object.entries(skills).map(([category, skillsList], categoryIndex: number) => (
+                <div class="skills-category" data-aos="fade-up" data-aos-delay={200 + (categoryIndex * 100)}>
                     <h3 class="category-title">{t(`skills.${category}`)}</h3>
                     <div class="skills-grid">
-                        {skillsList.map((skill: Skill) => (
-                            <div class="skill-item">
+                        {skillsList.map((skill: Skill, index: number) => (
+                            <div class="skill-item" data-aos="zoom-in" data-aos-delay={300 + (index * 50) + (categoryIndex * 100)}>
                                 <i class={skill.icon}></i>
                                 <span class="skill-name">{skill.name}</span>
                             </div>
