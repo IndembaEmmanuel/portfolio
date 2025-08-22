@@ -1,6 +1,49 @@
 ---
 import { defaultLanguage } from '../i18n/i18n';
 
-let userLanguage = Astro.preferredLocale || defaultLanguage;
-return Astro.redirect(`/${userLanguage}`, 301);
+// Détection de la langue préférée
+const userLanguage = Astro.preferredLocale || defaultLanguage;
+
+// Pas de redirection côté serveur
 ---
+
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <title>Redirection...</title>
+  <script>
+    // Redirection côté client - invisible pour l'utilisateur
+    window.location.replace(`/${userLanguage}`);
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #3498db, #8e44ad);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      color: white;
+    }
+    .loader {
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 5px solid white;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader"></div>
+</body>
+</html>
