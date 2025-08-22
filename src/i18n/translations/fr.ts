@@ -9,7 +9,6 @@ const translations: Translation = {
     contact: "Contact"
   },
   hero: {
-    greeting: "Hello!",
     name: "Je suis",
     role: "Développeur Full Stack",
     description: "Je conçois et développe des applications web/mobile modernes, performantes et adaptées à vos besoins.",
