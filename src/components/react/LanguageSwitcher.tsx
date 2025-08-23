@@ -19,24 +19,11 @@ const LanguageSwitcher = ({ currentLanguage = 'fr' }: LanguageSwitcherProps) => 
       return;
     }
 
-    const currentPath = window.location.pathname;
-    let newPath = '';
+    // Stocker la langue sélectionnée dans un cookie
+    document.cookie = `preferred_language=${lang}; path=/; max-age=31536000; SameSite=Strict`;
     
-    newPath = `/${lang}`;
-    
-    if (currentPath !== '/' && currentPath !== '/fr' && currentPath !== '/en') {
-      const pathParts = currentPath.split('/').filter(Boolean);
-      
-      if (Object.keys(languages).includes(pathParts[0])) {
-        pathParts.shift();
-      }
-      
-      if (pathParts.length > 0) {
-        newPath = `/${lang}/${pathParts.join('/')}`;
-      }
-    }
-
-    window.location.href = newPath;
+    // Recharger la page sans changer l'URL
+    window.location.reload();
   };
 
   return (

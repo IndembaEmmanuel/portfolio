@@ -1,7 +1,8 @@
 ---
 import LanguageSwitcherReact from './react/LanguageSwitcher';
 
-const currentLanguage = Astro.currentLocale || 'fr';
+// @ts-ignore - La propriété lang est définie dans le middleware
+const currentLanguage = Astro.locals.lang || Astro.currentLocale || 'fr';
 ---
 
 <LanguageSwitcherReact client:load currentLanguage={currentLanguage} />

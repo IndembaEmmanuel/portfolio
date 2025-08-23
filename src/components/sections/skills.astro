@@ -4,7 +4,8 @@ import {
     translate,
 } from "../../i18n/i18n";
 
-const currentLanguage = Astro.currentLocale || 'fr';
+// @ts-ignore - La propriété lang est définie dans le middleware
+const currentLanguage = Astro.locals.lang || Astro.currentLocale || 'fr';
 
 const translations = await loadTranslations(currentLanguage);
 const t = (key: string) => translate(translations, key);
