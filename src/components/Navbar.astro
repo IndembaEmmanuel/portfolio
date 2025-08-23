@@ -3,7 +3,8 @@ import { loadTranslations, translate } from '../i18n/i18n';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
-const currentLanguage = Astro.currentLocale || 'fr';
+// @ts-ignore
+const currentLanguage = Astro.locals.lang || Astro.currentLocale || 'fr';
 
 const translations = await loadTranslations(currentLanguage);
 
@@ -13,7 +14,7 @@ const t = (key: string) => translate(translations, key);
 <header class="navbar glass">
   <div class="container navbar-container">
     <div class="logo">
-      <a href={`/${currentLanguage}`}>Developer</a>
+      <a href="/">Developer</a>
     </div>
     
     <button class="mobile-menu-toggle" aria-label="Menu" id="mobile-menu-toggle">

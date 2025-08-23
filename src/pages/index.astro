@@ -1,7 +1,24 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/sections/hero.astro';
+import Skills from '../components/sections/skills.astro';
+import Projects from '../components/sections/projects.astro';
+import About from '../components/sections/about.astro';
+
 // Forcer le rendu côté serveur
 export const prerender = false;
 
-const preferredLanguage = Astro.preferredLocale;
-return Astro.redirect(`/${preferredLanguage}`, 301);
+// @ts-ignore
+const currentLanguage = Astro.locals.lang || 'fr';
+
+Astro.props.currentLocale = currentLanguage;
+
+const pageTitle = 'Emmanuel Indemba';
 ---
+
+<Layout title={pageTitle}>
+	<Hero />
+	<Skills />
+	<Projects />
+	<About />
+</Layout>

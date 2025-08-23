@@ -9,7 +9,8 @@ import prestaslotImage from '../../assets/projects/prestaslot.png';
 import portfolioImage from '../../assets/projects/portfolio.png';
 import easyColisImage from '../../assets/projects/Easy-colis.png';
 
-const currentLanguage = Astro.currentLocale || 'fr';
+// @ts-ignore
+const currentLanguage = Astro.locals.lang || Astro.currentLocale || 'fr';
 
 const translations = await loadTranslations(currentLanguage);
 const t = (key: string) => translate(translations, key);
