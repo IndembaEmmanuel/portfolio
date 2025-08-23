@@ -3,7 +3,7 @@ import { loadTranslations, translate } from '../i18n/i18n';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
-// @ts-ignore - La propriété lang est définie dans le middleware
+// @ts-ignore
 const currentLanguage = Astro.locals.lang || Astro.currentLocale || 'fr';
 
 const translations = await loadTranslations(currentLanguage);

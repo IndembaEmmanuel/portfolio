@@ -8,11 +8,9 @@ import About from '../components/sections/about.astro';
 // Forcer le rendu côté serveur
 export const prerender = false;
 
-// Récupérer la langue depuis locals (définie dans le middleware)
-// @ts-ignore - La propriété lang est définie dans le middleware
+// @ts-ignore
 const currentLanguage = Astro.locals.lang || 'fr';
 
-// Définir la langue pour la page (via la propriété currentLocale)
 Astro.props.currentLocale = currentLanguage;
 
 const pageTitle = 'Emmanuel Indemba';
