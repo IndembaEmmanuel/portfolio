@@ -8,6 +8,7 @@ import type { Project } from "../../types/project";
 import prestaslotImage from '../../assets/projects/prestaslot.png';
 import portfolioImage from '../../assets/projects/portfolio.png';
 import easyColisImage from '../../assets/projects/Easy-colis.png';
+import glamissimeImage from '../../assets/projects/Glamissime.png';
 
 // @ts-ignore
 const currentLanguage = Astro.locals.lang || Astro.currentLocale || 'fr';
@@ -44,6 +45,7 @@ const projects: Project[] = [
             { name: "React", icon: "devicon-react-original colored" },
             { name: "TypeScript", icon: "devicon-typescript-plain colored" },
             { name: "CSS", icon: "devicon-css3-plain colored" },
+            { name: "Vercel", icon: "devicon-vercel-plain" }
         ],
         links: {
             live: "https://emmanuelindemba.com",
@@ -51,6 +53,23 @@ const projects: Project[] = [
         },
         featured: true,
         badge: "completed"
+    },
+    {
+        title: "Glamissime",
+        description: "Projet de mise en vente de produit cosmétique et perruques via shopify. Site vide car non connecté à une boutique shopify.",
+        image: glamissimeImage,
+        technologies: [
+            { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+            { name: "Tailwind CSS", icon: "devicon-tailwindcss-plain colored" },
+            { name: "Next.js", icon: "devicon-nextjs-plain" },
+            { name: "Netlify", icon: "devicon-netlify-plain" }
+        ],
+        links: {
+            live: "https://glamissime.com",
+            //code: "https://github.com/IndembaEmmanuel/portfolio"
+        },
+        featured: false,
+        badge: "stand-by"
     },
     {
         title: "Easy colis",
